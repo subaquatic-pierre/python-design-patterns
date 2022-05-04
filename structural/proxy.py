@@ -23,11 +23,8 @@ class Proxy:
         if self.occupied == "No":
             self.producer = Producer()
 
-            sleep(1)
-
             print(self.producer.meet())
             return self.producer.produce()
 
         else:
-            sleep(1)
             return "Producer is not available"
