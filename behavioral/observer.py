@@ -14,7 +14,7 @@ class Subject:
 
     def notify(self):
         for observer in self._observers:
-            observer.update()
+            observer.update(self)
 
 
 class Reactor(Subject):
@@ -32,13 +32,12 @@ class Reactor(Subject):
         self._temp = val
 
         # notify observers
-        for observer in self._observers:
-            observer.update(self.temp)
+        self.notify()
 
 
 class Observer:
     def __init__(self, name) -> None:
         self.name = name
 
-    def update(self, temp):
-        print(f"{self.name} has been updated with new temp: {temp}")
+    def update(self, subject):
+        print(f"{self.name} has been updated with new temp: {subject.temp}")
